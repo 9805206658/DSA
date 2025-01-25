@@ -14,6 +14,7 @@ public class Test{
     static int mod = 1000000007;
     static int total = 0;
     static int max = Integer.MIN_VALUE;
+    static int min = Integer.MAX_VALUE;
     public static int sum(Node root)
     { if(root == null)
       return 0;
@@ -29,25 +30,21 @@ public class Test{
         traverse(root.left);
         traverse(root.right);
     }
+    public static int readData( int n)
+    {
+        if(n == 0)
+        {return 1; }
+        
+        System.out.println(min);
+        min = Math.min(min,n-1);
+        return  n*readData(n-1);
+    }
     public static void main(String args[])
     {
-        StringBuilder sb= new StringBuilder();
-        sb.append('b');
-        sb.append('i');
-        sb.append('k');
-        sb.deleteCharAt(sb.length()-1);
-        System.out.println(sb.toString());
-
-        // here creating the tree;
-        // Node root = new Node(1);
-        // root.left = new Node(2);
-        // root.right = new Node(3);
-        // root.left.left = new Node(4);
-        // root.left.right = new Node(5);
-        // root.right.left = new Node(6);
-        // total = sum(root);   
-        // traverse(root);
-        // System.out.println(max);
+        // System.out.println(value);
+        min = Integer.MAX_VALUE;
+        System.out.println(readData(5));
+        
         
     
     }

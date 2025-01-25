@@ -1,154 +1,93 @@
 import java.util.*;
 
-public class Test
-{
-   public static void solveSudoku(char[][] board) {
-     sudokuSolver( board ,0, 0);
-     }
-    public static boolean isSafers(char[][]board,int row,int col,char value)
-    {
-        // row test;
-        System.out.println("enter");
-        for(int i = 0;i<9; i++)
-        { if(board[row][i] == value)
-            {
-                return false;
-             }
-        }
-        // column test;
-        for(int i =0; i<9; i++)
-        {
-            if(board[i][col] == value)
-            {
-                return false;
-            }
-        }
-        // find out starting row and start colum;
-        int startRow = (row/3)*3;
-        int startCol =  (col/3)*3;
-        int endRow =0 , endCol =0;
-        endRow = startRow + 3;
-        endCol = endCol + 3;
-        for(int i = startRow; i<endRow; i++)
-        {
-            for(int j = startCol; j<endCol; j++)
-            {
-                // checking the digit either exist or not on the grid;
-                if(board[i][j] == value)
-                { return false;}
-            }
-        }
-        
-        return true;
-       }
-    public static boolean sudokuSolver(char[][] board ,int row,int col)
-    {
-       if(row == 9)
-       {return true;}
-       int nextCol = col+1;
-       int nextRow = row;
-        if(col == 8)
-        {   nextRow +=1;
-            nextCol = 0;
-        }
-        // the vlaue are greater than zero;
-        if(board[row][col] != '.')
-        { return sudokuSolver(board,nextRow,nextCol); }
-        // the value are not zero;
-         for(int digit= 1; digit<= 9; digit++)
-        {  if(isSafers(board,row,col,Integer.toString(digit).charAt(0)))
-            { 
-                // System.out.println("enter");
-                // System.out.println(Integer.toString(digit).charAt(0));
-            board[row][col] = Integer.toString(digit).charAt(0);
-            System.out.println(board[row][col]);
-              if(sudokuSolver(board,nextRow,nextCol))
-              {return true;}
-              board[row][col] ='.';
-             }
-         }
-        return false;
-    }
-    // n queen prblem
-       public static List<String> charToStr(char[][] rows)
-    {
-        List<String> l = new ArrayList<>();
-         for(int i= 0;i<rows.length; i++)
-         { 
-            StringBuilder sb = new StringBuilder();
-            for(int j =0;j<rows[0].length; j++)
-           {
-             sb.append(rows[i][j]);
-           }
-           l.add(sb.toString());
-         }
-         return l;
-     }
-   
-    public static void printBoard(List<List<String>> board)
-    { for(int i=0; i<board.size(); i++)
-        { System.out.println(board.get(i)); }
-           System.out.println();    
-    }
-    public static void placeQ(List<List<String>> board,char subBoard[][],int row)
-     {  if(row == subBoard.length)
-        {  board.add(charToStr(subBoard));
-            return ;
-        }
-        for(int i = 0; i<subBoard.length; i++)
-        {  subBoard[row][i] = 'Q';
-            placeQ(board,subBoard,row+1);
-            subBoard[row][i] = '.';
-        }
+public List<List<Integer>> subsets(int[] nums) {
+  List<List<Integer>> result = new ArrayList<>();
+  List<Integer> numList = new ArrayList<>();
+  
+  result.add(new ArrayList<>()); // empty set
+  subsets(0, nums, numList, result);
+  return result;
+}
 
-     }
-
-    
-    public static void main(String args[])
-    {
-        // List<String> l = new ArrayList<>();
-        // l.add("....");
-        // l.add("....");
-        // l.add("....");
-        // l.add("....");
-        // String str = l.get(0);
-        // char strs[] = str.toCharArray();
-        // strs[0] = '9';
-        // l.remove(0);
-        // l.add(0,charToStr(strs));
-        // System.out.println(l);
-
-        
-        
-        //  char[][] board = {
-        //     {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
-        //     {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-        //     {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-        //     {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
-        //     {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-        //     {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
-        //     {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-        //     {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
-        //     {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
-        // };
-        // solveSudoku(board);
-        // // here printing the board;
-        // for(int i =0;i<board.length;i++)
-        // {
-        //     for(int j=0; j<board.length;j++)
-        //     {
-        //         System.out.print(board[i][j]);
-        //     }
-        //     System.out.println();
-        // }
-      char subBoard[][] = {{'x','x'}, {'x','x'} };
-      List<List<String>> board = new ArrayList<>();
-      placeQ(board,subBoard,0);
-      printBoard(board);
-
-    }
+  
+private void subsets(int offset, int[] nums, List<Integer> numList, List<List<Integer>> result) {
+  if (offset >= nums.length) {
+    return;
+  }
+  int val = nums[offset];
+  // pick
+  numList.add(val);
+  subsets(offset + 1, nums, numList, result);
+  // add to result
+  result.add(new ArrayList<>(numList));
+  // not pick
+  numList.remove(numList.size() - 1);
+  subsets(offset + 1, nums, numList, result);
 }
 
 
 
 
+
+
+
+
+
+
+
+public class Test
+{
+    public static void printBinary(int arr[],List<Integer>temp,List<List<Integer>> result)
+    {
+        if(temp.size() == 2)
+        {  result.add(new ArrayList<>(temp));
+            return;
+        }
+        for(int i =0;i<arr.length; i++)
+        {    temp.add(arr[i]);
+             printBinary(arr,temp,result);
+             temp.remove(temp.size()-1);
+          
+        }
+    }
+    public static int decimal(List<Integer> l)
+    {
+        int dec = 0;
+        int pow = l.size()-1;
+        for(int i = 0;i<l.size(); i++)
+        {
+            dec += l.get(i)*(int)Math.pow(2,pow);
+            pow --;
+
+        }
+        return dec;
+
+    }
+    public static void sortList(List<Integer> list)
+    {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        int size = list.size();
+       for(int i = 0;i<size; i++)
+       {
+         pq.add(list.remove(list.size()-1));
+       }
+       while(!pq.isEmpty())
+       {
+        list.add(pq.remove());
+       }
+
+
+    }
+    public static void main(String args[])
+    {
+    List<Integer> list = new ArrayList<Integer>();
+    list.add(2);
+    list.add(5);
+    list.add(1);
+    list.add(3);
+    sortList(list);
+    System.out.println(list);
+       
+        
+    }
+}

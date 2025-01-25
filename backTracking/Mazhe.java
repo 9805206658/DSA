@@ -39,11 +39,8 @@ public static boolean solveMaghe(int mazhe[][])
 }
 
 public static boolean solveMazheUtil(int mazhe[][],int x,int y,int sol[][])
-{  
-
-    if(x == sol.length-1  || y == sol.length-1 && mazhe[x][y] == 1)
+{  if(x == sol.length-1  || y == sol.length-1 && mazhe[x][y] == 1)
     { sol[x][y]=1;
-    System.out.println("enter base case");
       return true;
     }
     // check mazhe is vlaid or not
@@ -52,16 +49,9 @@ public static boolean solveMazheUtil(int mazhe[][],int x,int y,int sol[][])
        return false;
        sol[x][y] =1;
        if( solveMazheUtil(mazhe,x+1,y,sol))
-       {
-        System.out.println("enter1");
-         return true;}
+       { return true;}
        if( solveMazheUtil(mazhe,x,y+1,sol))
-       {
-           System.out.println("enter2");
-        return true; 
-         }
-       System.out.println("enter");
-        // sol[x][y]=0;
+       {return true; }
     } 
     return false;
 }
@@ -89,20 +79,7 @@ public static void bfs(int pos,int len,StringBuilder sb,String D)
         {bfs(pos+1,len,new StringBuilder(sb).append(letters[i]),D);}
     }
 }
-public static void printName(int n,int count)
-{ if(count == n)
-    {
-        System.out.println("i enter in the return statement");
-        System.out.println();
-        return ;
-    }
-    for(int i=0; i < 2;i++)
-    {
-        System.out.println(i);
-        System.out.println("sb"+count);
-         printName(n,count+1);
-    }           
-}
+
 
  
 

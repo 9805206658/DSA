@@ -41,7 +41,7 @@ public class GridWays
     if(x == sol.length-1 && y == sol.length-1 && sol[x][y] == 1)
       { return true; }
     if(isSafe(x,y,mazhe) == true)
-    { System.out.println("enter");
+    {   System.out.println("enter");
         sol[x][y]=1;
         if(solveMaghi(x+1,y,sol,mazhe))
         {return true;}

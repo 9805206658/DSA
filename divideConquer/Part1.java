@@ -82,6 +82,7 @@ public class Part1
             arr[i]=temp;  } 
       }
        i++;
+    //    swaping the last element
        int temp=arr[ei];
        arr[ei]=arr[i];
        arr[i]=temp;
