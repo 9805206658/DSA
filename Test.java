@@ -10,7 +10,7 @@ public class Test
                 if(data[j]<data[j+1])
                 {
                     int temp=data[j];
-                    data[j]=data[j+1];
+                    // data[j]=data[j+1]
                     data[j+1]=temp;
                 }
             }
@@ -136,12 +136,25 @@ public static  void printArray(int data[])
         
 
 
+ public static double power(double x,int n,int i)
+    {
+        if(n == i)
+        {
+            return x;
+        }
+       return x*power(x, n, i+1);
+    }
+
+
+
+
          
 public static void main(String args[])
  {
-        int data[]={4,2,0,3,2,5};
-        int totalWater=trap(data);;
-        System.out.println(totalWater);
+        // int data[]={4,2,0,3,2,5};
+        // int totalWater=trap(data);;
+        // System.out.println(totalWater);
+         System.out.println(power(2.00,10,1));
         
          
     }

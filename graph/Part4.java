@@ -89,6 +89,14 @@ public class Part4
             System.out.println(dist[i]);
         }
     }
+
+
+
+
+//    prims algorith code 
+
+
+
     public static void main(String args[])
     {
         // here creating the graph

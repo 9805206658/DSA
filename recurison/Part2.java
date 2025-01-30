@@ -111,8 +111,9 @@ public static int countSub(String str,int si,int ei)
     }
     int removedFirstChar=countSub(str,si+1,ei);
     int removedLastChar=countSub(str,si,ei-1);
-    int removedBoth=countSub(str,si+1,ei-1);
-    int ans=removedFirstChar+removedLastChar-removedBoth;
+    // int removedBoth=countSub(str,si+1,ei-1);
+    int ans=removedFirstChar+removedLastChar;
+    // -removedBoth;
     if(str.charAt(si)==str.charAt(ei))
     {
         ans++;

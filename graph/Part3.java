@@ -72,6 +72,8 @@ public static void findPath(ArrayList<Edge> graph[],int src, int destination,Str
     public static void main(String args[])
     {
         // here creating the graph
+
+        
        ArrayList<Edge>[] graph = new ArrayList[6];
         for(int i = 0; i < graph.length; i++)
         {

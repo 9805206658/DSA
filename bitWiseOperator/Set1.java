@@ -15,7 +15,37 @@ public class Set1
       }
       return bin;
 
+  //  int ans = 0;
+  //       while(num != 0)
+  //       {
+  //           int bit = num %2;
+  //           num = num/2;
+  //           ans = ans*10+1;
+  //       }
+  //       return ans;
+
+
   }
+
+
+
+
+
+  public class Solution {
+    public int reverseBits(int n) {
+        int result = 0;
+        for (int i = 0; i < 32; i++) {
+            int bit = n & 1;          // Extract the least significant bit
+            result = (result << 1) | bit; // Append the bit to the result
+            n = n >>> 1;             // Unsigned right-shift
+        }
+        return result;
+    }
+}
+
+
+
+
   public static int generateDecimal(int n)
   {
     int ans=0;
@@ -32,7 +62,7 @@ public class Set1
   }
   public static void oddAndEven(int num)
   {
-    int bitMask=2;
+    int bitMask=1;
     if((num & bitMask)==0)
     {
         System.out.println("the number is even");
@@ -157,7 +187,31 @@ public static int setIthBit(int num,int pos)
         // here find out ans;
       return ans;
     }
+
   
+
+
+
+cclass Solution {
+    public int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] + 1 != 10) {
+                digits[i] += 1;
+                return digits;
+            }
+            digits[i] = 0;
+        }
+        
+        int[] newDigits = new int[digits.length + 1];
+        newDigits[0] = 1;
+        return newDigits;        
+    }
+}
+
+
+
+
+
 
     public static void main(String args[])
     {
@@ -177,13 +231,41 @@ public static int setIthBit(int num,int pos)
         //  System.out.println(isPowerOfTwo());
         //  System.out.println(getIthBit(5,2));
         // System.out.println("+"+1+"is"+(-~23)); }
-        System.out.println(generateDecimal((int) ('A')));
-        System.out.println(generateBinary((int)('A')));
+        // System.out.println(generateDecimal((int) ('A')));
+        // System.out.println(generateBinary((int)('A')));
 
         // for(char ch='A';  ch<='z'; ch++)
         // {
         //   System.out.println((char)(ch|' '));
         // }
+        // int num = 100;
+        // String str = num.toString();
+
+        // System.out.println(str);
+       System.out.println(generateDecimal(1));
     }
 
+}
+
+
+
+
+
+
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
+        HashSet<String> set = new HashSet<>();
+        
+        HashMap<String,Integer> map = new HashMap<>();
+        for(int i=0;i<s.length()-9;i++){
+            String str = s.substring(i,i+10);
+            if(map.containsKey(str)){
+                set.add(str);
+            }else{
+                map.put(str,1);
+            }
+        }
+        List<String> list = new ArrayList<>(set);
+        return list;
+    }
 }
