@@ -67,7 +67,7 @@ public class Part1
         int count = 1;
         ll.add(activities[0][0]);
          int endTime = activities[0][2];
-        for(int i=1; i<start.length; i++)
+        for(int =1;  i<start.length; i++)
         {  if(activities[i][1]>= endTime)
             {ll.add(activities[i][0]);
               endTime = activities[i][2];

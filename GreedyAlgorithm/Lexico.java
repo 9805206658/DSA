@@ -28,7 +28,8 @@ public class Lexico
     {  System.out.println(str[i]); }
   }
    public static void main(String args[])
-    {   // int sum = 42;
+    {  '
+      ' // int sum = 42;
         // int count =5;
         // lexico(sum,count);
       ArrayList<ArrayList<Integer>> al = new ArrayList<>();

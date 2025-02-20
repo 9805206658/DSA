@@ -348,7 +348,7 @@ public static void zigZag()
         prev = curr;
         curr = next;
    }
-//    here mergin the two half 
+//    here mergin the two half x
   Node left=head;
   Node right =prev;
   Node nextL,nextR;
