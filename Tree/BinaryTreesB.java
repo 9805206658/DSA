@@ -238,3 +238,57 @@ public class BinaryTreesB
 
      }
 }
+
+
+
+
+
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean dfs(TreeNode r1, TreeNode r2)
+    {
+        // here checking both null codition
+        if(r1 == null && r2 == null)
+        {return true ;}
+        // one of the node going to be node
+         if(r1 == null || r2 == null)
+        { return false; }
+        // value not equal
+        if(r1.val != r2. val)
+        return false;
+        // return false;
+        boolean call1 = dfs(r1.left,r2.right);
+        if(call1== false) 
+        return false;
+        boolean call2 = dfs(r1.right,r2.left);
+        if(call2 == false)
+        {
+            return false;
+        }
+        return true;
+       
+    }
+    public boolean isSymmetric(TreeNode root) {
+        if(root == null)
+        {return true;
+        }
+       return   dfs(root.left,root.right );     
+    }
+}
