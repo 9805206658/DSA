@@ -37,7 +37,7 @@ class Solution {
         for (int i = 0; i < length / k; i++) { // Reverse only complete k-groups
             ListNode last = curr; // Store the start of the current group
             prev = null;
-            
+            ehdeehehehe
             for (int j = 0; j < k; j++) { // Reverse k nodes
                 next = curr.next;
                 curr.next = prev;
